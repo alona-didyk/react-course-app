@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 
-import './App.scss';
-
 import Header from './components/Header/Header';
 import Courses from './components/Courses/Courses';
 import CourseInfo from './components/CourseInfo/CourseInfo';
 
 import { mockedCoursesList, mockedAuthorsList } from './constants';
 import { Course } from './helpers/type';
+
+import './App.scss';
 
 const App: React.FC = () => {
 	const [selectedCourse, setSelectedCourse] = useState<Course | null>(null);
@@ -21,7 +21,7 @@ const App: React.FC = () => {
 	};
 
 	return (
-		<>
+		<div className='app'>
 			<Header />
 
 			{selectedCourse ? (
@@ -37,7 +37,7 @@ const App: React.FC = () => {
 					onCourseSelect={handleCourseSelect}
 				/>
 			)}
-		</>
+		</div>
 	);
 };
 

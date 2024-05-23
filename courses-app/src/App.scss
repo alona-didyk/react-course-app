@@ -1,1 +1,6 @@
+@import './styles/variables';
 
+.app {
+	background: $app-background;
+	height: 100%;
+}

@@ -6,6 +6,7 @@ import { formatCreationDate } from 'src/helpers/formatCreationDate';
 import { Course, Author } from 'src/helpers/type';
 
 import { Button } from 'src/common/Button/Button';
+import { BUTTON_SHOW } from 'src/constants';
 
 interface CourseCardProps {
 	course: Course;
@@ -24,13 +25,28 @@ const CourseCard: React.FC<CourseCardProps> = ({
 		.join(', ');
 
 	return (
-		<div>
-			<h2>{course.title}</h2>
-			<p>{course.description}</p>
-			<p>Duration: {getCourseDuration(course.duration)}</p>
-			<p>Created: {formatCreationDate(course.creationDate)}</p>
-			<p>Authors: {courseAuthors}</p>
-			<Button text='Show course' onClick={() => onCourseSelect(course)} />
+		<div className='courses__container_card'>
+			<div className='courses__container_left'>
+				<h2>{course.title}</h2>
+				<p className='courses__container_description'>{course.description}</p>
+			</div>
+
+			<div className='courses__container_right'>
+				<div className='courses__container_top'>
+					<p className='courses__container_authors'>
+						<strong>Authors:</strong> {courseAuthors}
+					</p>
+					<p className='courses__container_description'>
+						<strong>Duration:</strong> {getCourseDuration(course.duration)}
+					</p>
+					<p className='courses__container_description'>
+						<strong>Created:</strong> {formatCreationDate(course.creationDate)}
+					</p>
+				</div>
+				<div className='courses__container_bottom'>
+					<Button text={BUTTON_SHOW} onClick={() => onCourseSelect(course)} />
+				</div>
+			</div>
 		</div>
 	);
 };
